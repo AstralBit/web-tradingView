@@ -108,6 +108,7 @@ export const Controls = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -143,13 +144,6 @@ export const ChartSection = styled.div<{ theme: Theme }>`
   @media (max-width: 768px) {
     padding: 0.5rem;
   }
-`;
-
-export const ChartTitle = styled.h2<{ theme: Theme }>`
-  color: ${props => props.theme.colors.text};
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
 `;
 
 export const TradingViewChart = styled.div<{ theme: Theme }>`

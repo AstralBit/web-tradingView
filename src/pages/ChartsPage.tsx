@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import ControlPanel from "@/components/ControlPanel";
 import ChartSection from "@/components/ChartSection";
 import ChartInfo from "@/components/ChartInfo";
@@ -28,6 +28,16 @@ const ChartsPage: React.FC<ChartsPageProps> = ({ theme }) => {
   const randomLineData = generateLineData(500);
   const randomVolumeData = generateVolumeData(500);
 
+  const chartDataMemory = useMemo(() => {
+    return {
+      candlestickData: useSampleData
+        ? sampleCandlestickData
+        : randomCandlestickData,
+      lineData: useSampleData ? sampleLineData : randomLineData,
+      volumeData: useSampleData ? sampleVolumeData : randomVolumeData,
+    };
+  }, [useSampleData]);
+
   return (
     <PageContainer theme={theme}>
       {/* 控制面板 */}
@@ -46,11 +56,9 @@ const ChartsPage: React.FC<ChartsPageProps> = ({ theme }) => {
       {/* TradingView 图表 */}
       <ChartSection
         theme={theme}
-        candlestickData={
-          useSampleData ? sampleCandlestickData : randomCandlestickData
-        }
-        lineData={useSampleData ? sampleLineData : randomLineData}
-        volumeData={useSampleData ? sampleVolumeData : randomVolumeData}
+        candlestickData={chartDataMemory.candlestickData}
+        lineData={chartDataMemory.lineData}
+        volumeData={chartDataMemory.volumeData}
         height={500}
         showVolume={showVolume}
         showLine={showLine}

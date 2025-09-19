@@ -44,7 +44,6 @@ const Navigation: React.FC<NavigationProps> = ({ theme }) => {
     <NavContainer theme={theme}>
       <NavContent>
         <LogoElement to="/" theme={theme}>
-          <LogoIconElement theme={theme}>T</LogoIconElement>
           TradingView
         </LogoElement>
 

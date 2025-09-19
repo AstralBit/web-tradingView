@@ -33,7 +33,7 @@ const ChartInfo: React.FC<ChartInfoProps> = ({ theme }) => {
         </ChartInfoItem>
       </ChartInfoList>
     </StyledChartInfo>
-  );
+  );  
 };
 
 export default ChartInfo;

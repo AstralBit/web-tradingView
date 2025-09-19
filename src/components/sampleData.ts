@@ -1,7 +1,7 @@
 import type { CandlestickData, LineData, VolumeData } from './TradingViewChart';
 
 // 生成随机K线数据
-export const generateCandlestickData = (days: number = 1000): CandlestickData[] => {
+export const generateCandlestickData = (days: number = 1000 ): CandlestickData[] => {
   const data: CandlestickData[] = [];
   let basePrice = 100;
   const today = new Date();

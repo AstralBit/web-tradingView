@@ -36,19 +36,6 @@ export const LogoElement = styled(Link)<{ theme: Theme }>`
   }
 `;
 
-export const LogoIconElement = styled.div<{ theme: Theme }>`
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2rem;
-`;
-
 export const NavLinks = styled.div`
   display: flex;
   align-items: center;

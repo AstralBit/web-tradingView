@@ -4,7 +4,6 @@ import {
   NavContainer,
   NavContent,
   LogoElement,
-  LogoIconElement,
   NavLinks, 
   NavLink,
   MobileMenuButton,

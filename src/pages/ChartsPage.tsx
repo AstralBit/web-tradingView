@@ -18,15 +18,15 @@ interface ChartsPageProps {
 }
 
 const ChartsPage: React.FC<ChartsPageProps> = ({ theme }) => {
-  const [useSampleData, setUseSampleData] = useState(true);
+  const [useSampleData, setUseSampleData] = useState(false);
   const [showVolume, setShowVolume] = useState(true);
-  const [showLine, setShowLine] = useState(false);
+  const [showLine, setShowLine] = useState(true);
   const [showCandlestick, setShowCandlestick] = useState(true);
 
   // 生成随机数据
-  const randomCandlestickData = generateCandlestickData(30);
-  const randomLineData = generateLineData(30);
-  const randomVolumeData = generateVolumeData(30);
+  const randomCandlestickData = generateCandlestickData(500);
+  const randomLineData = generateLineData(500);
+  const randomVolumeData = generateVolumeData(500);
 
   return (
     <PageContainer theme={theme}>

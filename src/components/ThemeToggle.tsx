@@ -7,7 +7,7 @@ const ToggleContainer = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: ${props => props.theme === 'dark' ? '#2a2a2a' : '#f8f9fa'};
+  background: ${props => props.theme === 'dark' ? '#000000' : '#ffffff'};
   border: 1px solid ${props => props.theme === 'dark' ? '#444' : '#e1e1e1'};
   border-radius: 8px;
   transition: all 0.3s ease;

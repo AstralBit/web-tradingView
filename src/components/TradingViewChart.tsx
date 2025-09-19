@@ -284,7 +284,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
         ref={chartContainerRef}
         style={{
           width: width ? `${width}px` : '100%',
-          height: `${Math.max(0, height - 48)}px`,
+          height: `${Math.max(0, height)}px`,
         }}
       />
 

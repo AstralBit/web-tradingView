@@ -19,7 +19,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // 从localStorage获取保存的主题，默认为light
   const [theme, setThemeState] = useState<Theme>(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
-    return savedTheme || 'light';
+    return savedTheme || 'dark';
   });
 
   // 保存主题到localStorage

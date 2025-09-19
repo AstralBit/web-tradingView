@@ -28,11 +28,6 @@ const HomePage: React.FC<HomePageProps> = ({ theme }) => {
       description: "支持白天和黑夜主题，提供更好的视觉体验"
     },
     {
-      icon: "📱",
-      title: "响应式设计",
-      description: "完美适配桌面端和移动端，随时随地查看图表"
-    },
-    {
       icon: "⚡",
       title: "高性能",
       description: "基于现代Web技术，流畅的交互体验"

@@ -33,8 +33,8 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   mode: 'dark',
   colors: {
-    background: '#1a1a1a',
-    surface: '#2a2a2a',
+    background: '#000000',
+    surface: '#000000',
     primary: '#4a9eff',
     secondary: '#26a69a',
     text: '#ffffff',

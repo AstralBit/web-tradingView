@@ -13,7 +13,6 @@ export const PageContainer = styled.div<{ theme: Theme }>`
 // 英雄区域
 export const HeroSection = styled.section`
   text-align: center;
-  padding: 4rem 0;
   max-width: 800px;
   margin: 0 auto;
 `;

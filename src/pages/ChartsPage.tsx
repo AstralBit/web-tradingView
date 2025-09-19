@@ -11,11 +11,9 @@ import {
   sampleVolumeData,
 } from "@/components/sampleData";
 import type { Theme } from "@/components/styled/App.styled";
-import {
-  PageContainer,
-} from "@/pages/styles/ChartsPage.styled";
+import { PageContainer } from "@/pages/styles/ChartsPage.styled";
 
-interface ChartsPageProps { 
+interface ChartsPageProps {
   theme: Theme;
 }
 

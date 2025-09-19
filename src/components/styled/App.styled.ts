@@ -87,10 +87,7 @@ export const ReadTheDocs = styled.div`
 // 控制面板样式
 export const ControlPanel = styled.div<{ theme: Theme }>`
   margin-top: 1rem; 
-  padding: 1.5rem;
   background: ${props => props.theme.colors.surface};
-  border-radius: 8px;
-  text-align: left;
   border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
 `;
@@ -99,14 +96,8 @@ export const Controls = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
+  justify-content: right;
+  `;
 
 export const ControlLabel = styled.label<{ theme: Theme }>`
   display: flex;
@@ -125,16 +116,8 @@ export const ControlLabel = styled.label<{ theme: Theme }>`
 
 // TradingView图表样式
 export const ChartSection = styled.div<{ theme: Theme }>`
-  padding: 1rem;
   background: ${props => props.theme.colors.surface};
-  border-radius: 8px;
-  box-shadow: 0 2px 4px ${props => props.theme.colors.shadow};
-  border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    padding: 0.5rem;
-  }
 `;
 
 export const TradingViewChart = styled.div<{ theme: Theme }>`

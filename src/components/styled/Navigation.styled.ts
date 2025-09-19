@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export const NavContainer = styled.nav<{ theme: Theme }>`
   background: ${props => props.theme.colors.surface};
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-  box-shadow: 0 2px 4px ${props => props.theme.colors.shadow};
+  box-shadow: 0 2px 8px ${props => props.theme.colors.shadow};
   position: sticky;
   top: 0;
   z-index: 1000;

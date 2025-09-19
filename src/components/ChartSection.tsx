@@ -1,10 +1,12 @@
 import React from "react";
 import TradingViewChart from "@/components/TradingViewChart";
-import {
-  ChartSection as StyledChartSection,
-} from "@/components/styled/App.styled";
+import { ChartSection as StyledChartSection } from "@/components/styled/App.styled";
 import type { Theme } from "@/components/styled/App.styled";
-import type { CandlestickData, LineData, VolumeData } from "@/components/TradingViewChart";
+import type {
+  CandlestickData,
+  LineData,
+  VolumeData,
+} from "@/components/TradingViewChart";
 
 interface ChartSectionProps {
   theme: Theme;

@@ -7,6 +7,8 @@ export const PageContainer = styled.div<{ theme: Theme }>`
   color: ${props => props.theme.colors.text};
   min-height: calc(100vh - 64px);
   transition: all 0.3s ease;
+  max-width: calc(100vw - 24px);
+  margin: 0 auto;
 `;
 
 export const ThemeToggleContainer = styled.div`

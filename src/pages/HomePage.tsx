@@ -42,13 +42,10 @@ const HomePage: React.FC<HomePageProps> = ({ theme }) => {
   return (
     <PageContainer theme={theme}>
       <HeroSection>
-        <HeroTitle theme={theme}>TradingView 图表平台</HeroTitle>
-        <HeroSubtitle theme={theme}>
-          专业的金融图表分析工具，提供实时数据、多种图表类型和强大的分析功能
-        </HeroSubtitle>
+        <HeroTitle theme={theme}>TradingView</HeroTitle>
       </HeroSection>
 
-      <FeatureGrid>
+      <FeatureGrid> 
         {features.map((feature, index) => (
           <FeatureCard key={index} theme={theme}>
             <FeatureIcon theme={theme}>{feature.icon}</FeatureIcon>

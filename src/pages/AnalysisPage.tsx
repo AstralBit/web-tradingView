@@ -1,5 +1,5 @@
 import React from "react";
-import type { Theme } from "../components/styled/App.styled";
+import type { Theme } from "@/components/styled/App.styled";
 import {
   PageContainer,
   PageTitle,
@@ -11,7 +11,7 @@ import {
   MetricItem,
   MetricValue,
   MetricLabel,
-} from "./styles/AnalysisPage.styled";
+} from "@/pages/styles/AnalysisPage.styled";
 
 interface AnalysisPageProps {
   theme: Theme;

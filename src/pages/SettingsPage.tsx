@@ -1,6 +1,6 @@
 import React from "react";
-import ThemeToggle from "../components/ThemeToggle";
-import type { Theme } from "../components/styled/App.styled";
+import ThemeToggle from "@/components/ThemeToggle";
+import type { Theme } from "@/components/styled/App.styled";
 import {
   PageContainer,
   PageTitle,
@@ -15,7 +15,7 @@ import {
   Select,
   Input,
   Checkbox,
-} from "./styles/SettingsPage.styled";
+} from "@/pages/styles/SettingsPage.styled";
 
 interface SettingsPageProps {
   theme: Theme;

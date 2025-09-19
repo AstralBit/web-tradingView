@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { Theme } from "../../components/styled/App.styled";
+import type { Theme } from "@/components/styled/App.styled";
 
 // 页面容器
 export const PageContainer = styled.div<{ theme: Theme }>`

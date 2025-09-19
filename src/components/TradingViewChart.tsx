@@ -17,8 +17,8 @@ import {
   TvLegendTime,
   lightTheme,
   darkTheme
-} from './styled/App.styled';
-import { useTheme } from '../contexts/ThemeContext';
+} from '@/components/styled/App.styled';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export interface CandlestickData {
   time: string;

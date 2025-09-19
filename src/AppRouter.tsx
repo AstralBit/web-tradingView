@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useTheme } from "./contexts/ThemeContext";
-import Navigation from "./components/Navigation";
-import HomePage from "./pages/HomePage";
-import ChartsPage from "./pages/ChartsPage";
-import AnalysisPage from "./pages/AnalysisPage";
-import SettingsPage from "./pages/SettingsPage";
-import { lightTheme, darkTheme } from "./components/styled/App.styled";
+import { useTheme } from "@/contexts/ThemeContext";
+import Navigation from "@/components/Navigation";
+import HomePage from "@/pages/HomePage";
+import ChartsPage from "@/pages/ChartsPage";
+import AnalysisPage from "@/pages/AnalysisPage";
+import SettingsPage from "@/pages/SettingsPage";
+import { lightTheme, darkTheme } from "@/components/styled/App.styled";
 
 const AppRouter: React.FC = () => {
   const { theme } = useTheme();

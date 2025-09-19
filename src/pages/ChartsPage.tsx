@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ControlPanel from "../components/ControlPanel";
-import ChartSection from "../components/ChartSection";
-import ChartInfo from "../components/ChartInfo";
+import ControlPanel from "@/components/ControlPanel";
+import ChartSection from "@/components/ChartSection";
+import ChartInfo from "@/components/ChartInfo";
 import {
   generateCandlestickData,
   generateLineData,
@@ -9,15 +9,13 @@ import {
   sampleCandlestickData,
   sampleLineData,
   sampleVolumeData,
-} from "../components/sampleData";
-import type { Theme } from "../components/styled/App.styled";
+} from "@/components/sampleData";
+import type { Theme } from "@/components/styled/App.styled";
 import {
   PageContainer,
-  PageTitle,
-  PageSubtitle,
-} from "./styles/ChartsPage.styled";
+} from "@/pages/styles/ChartsPage.styled";
 
-interface ChartsPageProps {
+interface ChartsPageProps { 
   theme: Theme;
 }
 
@@ -34,11 +32,6 @@ const ChartsPage: React.FC<ChartsPageProps> = ({ theme }) => {
 
   return (
     <PageContainer theme={theme}>
-      <PageTitle theme={theme}>图表分析</PageTitle>
-      <PageSubtitle theme={theme}>
-        使用专业的图表工具进行技术分析和数据可视化
-      </PageSubtitle>
-
       {/* 控制面板 */}
       <ControlPanel
         theme={theme}

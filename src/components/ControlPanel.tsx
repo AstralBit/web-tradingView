@@ -1,12 +1,10 @@
 import React from "react";
-import ThemeToggle from "./ThemeToggle";
 import {
   ControlPanel as StyledControlPanel,
-  ControlPanelTitle,
   Controls,
   ControlLabel,
-} from "./styled/App.styled";
-import type { Theme } from "./styled/App.styled";
+} from "@/components/styled/App.styled";
+import type { Theme } from "@/components/styled/App.styled";
 
 interface ControlPanelProps {
   theme: Theme;
@@ -33,8 +31,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 }) => {
   return (
     <StyledControlPanel theme={theme}>
-      <ControlPanelTitle theme={theme}>图表控制面板</ControlPanelTitle>
-
       <Controls>
         <ControlLabel theme={theme}>
           <input
@@ -69,17 +65,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
           显示成交量
         </ControlLabel>
       </Controls>
-
-      {/* 主题切换组件 */}
-      <div
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <ThemeToggle />
-      </div>
     </StyledControlPanel>
   );
 };

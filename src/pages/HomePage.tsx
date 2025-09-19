@@ -1,5 +1,5 @@
 import React from "react";
-import type { Theme } from "../components/styled/App.styled";
+import type { Theme } from "@/components/styled/App.styled";
 import {
   PageContainer,
   HeroSection,
@@ -10,7 +10,7 @@ import {
   FeatureIcon,
   FeatureTitle,
   FeatureDescription,
-} from "./styles/HomePage.styled";
+} from "@/pages/styles/HomePage.styled";
 
 interface HomePageProps {
   theme: Theme;

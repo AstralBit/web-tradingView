@@ -86,21 +86,13 @@ export const ReadTheDocs = styled.div`
 
 // 控制面板样式
 export const ControlPanel = styled.div<{ theme: Theme }>`
-  margin: 2rem 0;
+  margin-top: 1rem; 
   padding: 1.5rem;
   background: ${props => props.theme.colors.surface};
   border-radius: 8px;
-  box-shadow: 0 2px 4px ${props => props.theme.colors.shadow};
   text-align: left;
   border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
-`;
-
-export const ControlPanelTitle = styled.h2<{ theme: Theme }>`
-  color: ${props => props.theme.colors.text};
-  margin-bottom: 1rem;
-  text-align: center;
-  transition: color 0.3s ease;
 `;
 
 export const Controls = styled.div`
@@ -133,7 +125,6 @@ export const ControlLabel = styled.label<{ theme: Theme }>`
 
 // TradingView图表样式
 export const ChartSection = styled.div<{ theme: Theme }>`
-  margin: 2rem 0;
   padding: 1rem;
   background: ${props => props.theme.colors.surface};
   border-radius: 8px;

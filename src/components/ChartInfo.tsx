@@ -4,8 +4,8 @@ import {
   ChartInfoTitle,
   ChartInfoList,
   ChartInfoItem,
-} from "./styled/App.styled";
-import type { Theme } from "./styled/App.styled";
+} from "@/components/styled/App.styled";
+import type { Theme } from "@/components/styled/App.styled";
 
 interface ChartInfoProps {
   theme: Theme;

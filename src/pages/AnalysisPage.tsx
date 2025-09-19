@@ -20,8 +20,8 @@ interface AnalysisPageProps {
 const AnalysisPage: React.FC<AnalysisPageProps> = ({ theme }) => {
   const analysisData = [
     {
-      title: "技术指标",
-      content: "基于历史数据计算的技术指标，帮助识别市场趋势和交易机会。",
+      title: "Technical Indicators",
+      content: "Technical indicators based on historical data to help identify market trends and trading opportunities.",
       metrics: [
         { label: "RSI", value: "65.4" },
         { label: "MACD", value: "0.23" },
@@ -30,40 +30,40 @@ const AnalysisPage: React.FC<AnalysisPageProps> = ({ theme }) => {
       ]
     },
     {
-      title: "市场情绪",
-      content: "分析市场参与者的情绪和预期，为投资决策提供参考。",
+      title: "Market Sentiment",
+      content: "Analyze the sentiment and expectations of market participants to provide reference for investment decisions.",
       metrics: [
-        { label: "恐惧指数", value: "32" },
-        { label: "贪婪指数", value: "68" },
-        { label: "成交量比", value: "1.2x" },
-        { label: "波动率", value: "15.6%" }
+        { label: "Fear Index", value: "32" },
+        { label: "Greed Index", value: "68" },
+        { label: "Volume Ratio", value: "1.2x" },
+        { label: "Volatility", value: "15.6%" }
       ]
     },
     {
-      title: "支撑阻力",
-      content: "识别关键的价格支撑和阻力位，帮助制定交易策略。",
+      title: "Support and Resistance",
+      content: "Identify key price support and resistance levels to help制定交易策略。",
       metrics: [
-        { label: "阻力位1", value: "43,200" },
-        { label: "阻力位2", value: "44,500" },
-        { label: "支撑位1", value: "41,800" },
-        { label: "支撑位2", value: "40,200" }
+        { label: "Resistance Level 1", value: "43,200" },
+        { label: "Resistance Level 2", value: "44,500" },
+        { label: "Support Level 1", value: "41,800" },
+        { label: "Support Level 2", value: "40,200" }
       ]
     },
     {
-      title: "趋势分析",
-      content: "分析价格趋势的方向和强度，判断市场走势。",
+      title: "Trend Analysis",
+      content: "Analyze the direction and strength of price trends to determine market trends.",
       metrics: [
-        { label: "趋势强度", value: "强" },
-        { label: "趋势方向", value: "上升" },
-        { label: "持续时间", value: "5天" },
-        { label: "置信度", value: "85%" }
+        { label: "Trend Strength", value: "Strong" },
+        { label: "Trend Direction", value: "Up" },
+        { label: "Duration", value: "5 days" },
+        { label: "Confidence", value: "85%" }
       ]
     }
   ];
 
   return (
     <PageContainer theme={theme}>
-      <PageTitle theme={theme}>技术分析</PageTitle>
+      <PageTitle theme={theme}>Analysis</PageTitle>
       
       <AnalysisGrid>
         {analysisData.map((item, index) => (

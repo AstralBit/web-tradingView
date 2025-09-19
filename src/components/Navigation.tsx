@@ -25,10 +25,10 @@ const Navigation: React.FC<NavigationProps> = ({ theme }) => {
   const isMobile = useMediaQuery({ maxWidth: 800 });
 
   const navItems = [
-    { path: "/", label: "首页", icon: "🏠" },
-    { path: "/charts", label: "图表", icon: "📊" },
-    { path: "/analysis", label: "分析", icon: "📈" },
-    { path: "/settings", label: "设置", icon: "⚙️" },
+    { path: "/", label: "Home", icon: "🏠" },
+    { path: "/charts", label: "Charts", icon: "📊" },
+    { path: "/analysis", label: "Analysis", icon: "📈" },
+    { path: "/settings", label: "Settings", icon: "⚙️" },
   ];
 
   const toggleMobileMenu = () => {

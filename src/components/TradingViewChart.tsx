@@ -269,12 +269,12 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
       {/* 顶部工具栏 */}
       <TvToolbar theme={currentTheme}>
         <TvToolbarLeft>
-          <TvToolbarButton theme={currentTheme} onClick={() => chartRef.current?.timeScale().fitContent()}>自动缩放</TvToolbarButton>
-          <TvToolbarButton theme={currentTheme} onClick={() => chartRef.current?.timeScale().scrollToRealTime()}>回到最新</TvToolbarButton>
+          <TvToolbarButton theme={currentTheme} onClick={() => chartRef.current?.timeScale().fitContent()}>Auto Scale</TvToolbarButton>
+          <TvToolbarButton theme={currentTheme} onClick={() => chartRef.current?.timeScale().scrollToRealTime()}>Back to Latest</TvToolbarButton>
         </TvToolbarLeft>
         <TvToolbarRight>
           <TvToolbarButton theme={currentTheme} onClick={() => setCrosshairMode((m) => (m === 1 ? 0 : 1))}>
-            十字线: {crosshairMode === 1 ? '吸附' : '自由'}
+            Crosshair: {crosshairMode === 1 ? 'Magnet' : 'Free'}
           </TvToolbarButton>
         </TvToolbarRight>
       </TvToolbar>

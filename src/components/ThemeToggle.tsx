@@ -72,7 +72,7 @@ const ThemeToggle: React.FC = () => {
         {isDark ? '🌙' : '☀️'}
       </IconContainer>
       <ToggleLabel $isDark={isDark}>
-        {isDark ? '黑夜模式' : '白天模式'}
+        {isDark ? 'Dark Mode' : 'Light Mode'}
       </ToggleLabel>
       <ToggleSwitch $isDark={isDark} />
     </ToggleContainer>

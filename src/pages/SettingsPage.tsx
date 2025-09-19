@@ -24,17 +24,17 @@ interface SettingsPageProps {
 const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
   return (
     <PageContainer theme={theme}>
-      <PageTitle theme={theme}>设置</PageTitle>
+      <PageTitle theme={theme}>Settings</PageTitle>
       
       <SettingsGrid>
         <SettingsCard theme={theme}>
-          <CardTitle theme={theme}>外观设置</CardTitle>
+          <CardTitle theme={theme}>Appearance Settings</CardTitle>
           
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>主题模式</SettingLabel>
+              <SettingLabel theme={theme}>Theme Mode</SettingLabel>
               <SettingDescription theme={theme}>
-                选择您喜欢的主题模式
+                Select your favorite theme mode
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
@@ -44,29 +44,29 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
 
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>图表主题</SettingLabel>
+              <SettingLabel theme={theme}>Chart Theme</SettingLabel>
               <SettingDescription theme={theme}>
-                设置图表显示的主题
+                Set the theme for the chart display
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
               <Select theme={theme}>
-                <option value="light">白天</option>
-                <option value="dark">黑夜</option>
-                <option value="auto">跟随系统</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="auto">Follow System</option>
               </Select>
             </SettingControl>
           </SettingItem>
         </SettingsCard>
 
         <SettingsCard theme={theme}>
-          <CardTitle theme={theme}>图表设置</CardTitle>
+          <CardTitle theme={theme}>Chart Settings</CardTitle>
           
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>默认图表高度</SettingLabel>
+              <SettingLabel theme={theme}>Default Chart Height</SettingLabel>
               <SettingDescription theme={theme}>
-                设置图表的默认高度（像素）
+                Set the default height of the chart (pixels)
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
@@ -76,9 +76,9 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
 
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>自动刷新</SettingLabel>
+              <SettingLabel theme={theme}>Auto Refresh</SettingLabel>
               <SettingDescription theme={theme}>
-                启用数据自动刷新
+                Enable automatic data refresh
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
@@ -88,36 +88,36 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
 
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>刷新间隔</SettingLabel>
+              <SettingLabel theme={theme}>Refresh Interval</SettingLabel>
               <SettingDescription theme={theme}>
-                数据刷新间隔（秒）
+                Data refresh interval (seconds)
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
               <Select theme={theme}>
-                <option value="5">5秒</option>
-                <option value="10">10秒</option>
-                <option value="30">30秒</option>
-                <option value="60">1分钟</option>
+                <option value="5">5 seconds</option>
+                <option value="10">10 seconds</option>
+                <option value="30">30 seconds</option>
+                <option value="60">1 minute</option>
               </Select>
             </SettingControl>
           </SettingItem>
         </SettingsCard>
 
         <SettingsCard theme={theme}>
-          <CardTitle theme={theme}>数据设置</CardTitle>
+          <CardTitle theme={theme}>Data Settings</CardTitle>
           
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>数据源</SettingLabel>
+              <SettingLabel theme={theme}>Data Source</SettingLabel>
               <SettingDescription theme={theme}>
-                选择数据来源
+                Select the data source
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
               <Select theme={theme}>
-                <option value="demo">演示数据</option>
-                <option value="api">API数据</option>
+                <option value="demo">Demo Data</option>
+                <option value="api">API Data</option>
                 <option value="ws">WebSocket</option>
               </Select>
             </SettingControl>
@@ -125,9 +125,9 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
 
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>缓存数据</SettingLabel>
+              <SettingLabel theme={theme}>Cache Data</SettingLabel>
               <SettingDescription theme={theme}>
-                缓存历史数据以提高性能
+                Cache historical data to improve performance
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
@@ -137,13 +137,13 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
         </SettingsCard>
 
         <SettingsCard theme={theme}>
-          <CardTitle theme={theme}>通知设置</CardTitle>
+          <CardTitle theme={theme}>Notification Settings</CardTitle>
           
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>价格提醒</SettingLabel>
+              <SettingLabel theme={theme}>Price Alert</SettingLabel>
               <SettingDescription theme={theme}>
-                启用价格变动提醒
+                Enable price change alert
               </SettingDescription>
             </SettingInfo>
             <SettingControl>
@@ -153,9 +153,9 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ theme }) => {
 
           <SettingItem theme={theme}>
             <SettingInfo>
-              <SettingLabel theme={theme}>邮件通知</SettingLabel>
+              <SettingLabel theme={theme}>Email Notification</SettingLabel>
               <SettingDescription theme={theme}>
-                通过邮件接收重要通知
+                Receive important notifications via email
               </SettingDescription>
             </SettingInfo>
             <SettingControl>

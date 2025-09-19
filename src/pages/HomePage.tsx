@@ -18,18 +18,18 @@ const HomePage: React.FC<HomePageProps> = ({ theme }) => {
   const features = [
     {
       icon: "📊",
-      title: "实时图表",
-      description: "支持K线图、折线图、成交量等多种图表类型，实时更新数据"
+      title: "Real-time Charts",
+      description: "Support for K-line, line chart, volume chart, etc., real-time update data"
     },
     {
       icon: "🎨",
-      title: "主题切换",
-      description: "支持白天和黑夜主题，提供更好的视觉体验"
+      title: "Theme Switching",
+      description: "Support for day and night themes, providing a better visual experience"
     },
     {
       icon: "⚡",
-      title: "高性能",
-      description: "基于现代Web技术，流畅的交互体验"
+      title: "High Performance",
+      description: "Based on modern Web technology, smooth interactive experience"
     }
   ];
 

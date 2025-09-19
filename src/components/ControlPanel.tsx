@@ -38,7 +38,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             checked={useSampleData}
             onChange={(e) => onUseSampleDataChange(e.target.checked)}
           />
-          使用示例数据
+          Use Sample Data
         </ControlLabel>
         <ControlLabel theme={theme}>
           <input
@@ -46,7 +46,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             checked={showCandlestick}
             onChange={(e) => onShowCandlestickChange(e.target.checked)}
           />
-          显示K线图
+          Show K-line Chart
         </ControlLabel>
         <ControlLabel theme={theme}>
           <input
@@ -54,7 +54,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             checked={showLine}
             onChange={(e) => onShowLineChange(e.target.checked)}
           />
-          显示折线图
+          Show Line Chart
         </ControlLabel>
         <ControlLabel theme={theme}>
           <input
@@ -62,7 +62,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
             checked={showVolume}
             onChange={(e) => onShowVolumeChange(e.target.checked)}
           />
-          显示成交量
+          Show Volume Chart
         </ControlLabel>
       </Controls>
     </StyledControlPanel>

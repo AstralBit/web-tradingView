@@ -32,14 +32,6 @@ export const HeroTitle = styled.h1<{ theme: Theme }>`
   }
 `;
 
-export const HeroSubtitle = styled.p<{ theme: Theme }>`
-  font-size: 1.2rem;
-  color: ${props => props.theme.colors.textSecondary};
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  transition: color 0.3s ease;
-`;
-
 // 功能特性网格
 export const FeatureGrid = styled.div`
   display: grid;

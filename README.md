@@ -1,4 +1,7 @@
-# React + TypeScript + Vite
+# React + TypeScript + trendingView
+
+
+<img width="1815" height="926" alt="Snipaste_2025-09-19_17-41-35" src="https://github.com/user-attachments/assets/fc755be9-9ea3-4f70-91f7-a28cc5df756d" />
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

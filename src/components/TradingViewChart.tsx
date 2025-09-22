@@ -194,7 +194,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
         chart.remove();
       }
     };
-  }, [height, width, currentTheme]);
+  }, [height, width]);
 
   // 2. 数据更新 - 根据 show 状态控制数据显示/隐藏
   useEffect(() => {
@@ -268,6 +268,24 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
   useEffect(() => {
     chartRef.current?.applyOptions({ crosshair: { mode: crosshairMode } });
   }, [crosshairMode]);
+
+    // 主题应用 - 单独处理主题更新，不重新创建图表
+    useEffect(() => {
+      if (!chartRef.current) return;
+      chartRef.current.applyOptions({
+        layout: {
+          background: { type: ColorType.Solid, color: currentTheme.colors.background },
+          textColor: currentTheme.colors.text,
+        },
+        grid: {
+          vertLines: { color: currentTheme.colors.border },
+          horzLines: { color: currentTheme.colors.border },
+        },
+        rightPriceScale: { borderColor: currentTheme.colors.border },
+        timeScale: { borderColor: currentTheme.colors.border },
+      });
+    }, [currentTheme]);
+  
 
   return (
     <StyledTradingViewChart theme={currentTheme}>

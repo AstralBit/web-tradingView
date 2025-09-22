@@ -1,13 +1,40 @@
 import { useMemo, useRef } from "react";
 import styled from "styled-components";
 import { useTheme } from "@/contexts/ThemeContext";
+import OrderBook from "./OrderBook";
 
 export type TimeFrame = "1H" | "1D" | "1W" | "1M" | "1Y" | "ALL";
 
+
+// 主容器组件
 const TradingViewIframeStyled = styled.div`
-  height: 600px;
-  background-color: #0a0b0d;
+  display: grid;
+  /* 默认左右布局，右侧320px */
+  grid-template-columns: 70% 30%;
+
+  /* 768px以下变为上下布局 */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* 单列布局 */
+    grid-template-rows: auto auto; /* 两行自动高度 */
+  }
 `;
+
+// 左侧内容区域
+const LeftPanel = styled.div`
+  width: 100%;
+  height: 500px;
+`;
+
+// 右侧内容区域（固定320px宽）
+const RightPanel = styled.div`
+  /* 在桌面视图中固定宽度，与grid布局保持一致 */
+  width: 100%;
+  /* 在移动视图中占满宽度 */
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 
 const buildTradingViewUrl = (config: Record<string, string>) => {
   const params = new URLSearchParams();
@@ -47,33 +74,35 @@ const TradingViewIframe = () => {
 
   // Use a ref to store the iframe element
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const initialSrc = useMemo(() => (
-    buildTradingViewUrl({
-      interval: timeframeMap["1D"],
-      symbol: "BITFINEX:BTCUSD",
-      theme: contextTheme,
-      style: "1",
-      locale: "en",
-      enable_publishing: "false",
-      allow_symbol_change: "false",
-      hide_side_toolbar: "false",
-      save_image: "false",
-      studies: "[]",
-      backgroundColor: contextTheme === 'dark' ? "rgba(10,11,13,1)" : "rgba(255,255,255,1)",
-      gridColor: "rgba(51,51,51,0.4)",
-      upColor: "#4CAF50",
-      downColor: "#F44336",
-      borderUpColor: "#4CAF50",
-      borderDownColor: "#F44336",
-      wickUpColor: "#4CAF50",
-      wickDownColor: "#F44336",
-    })
-  ), [contextTheme])
-
-
+  const initialSrc = useMemo(
+    () =>
+      buildTradingViewUrl({
+        interval: timeframeMap["1D"],
+        symbol: "BITFINEX:BTCUSD",
+        theme: contextTheme,
+        style: "1",
+        locale: "en",
+        enable_publishing: "false",
+        allow_symbol_change: "false",
+        hide_side_toolbar: "false",
+        save_image: "false",
+        studies: "[]",
+        backgroundColor:
+          contextTheme === "dark" ? "rgba(10,11,13,1)" : "rgba(255,255,255,1)",
+        gridColor: "rgba(51,51,51,0.4)",
+        upColor: "#4CAF50",
+        downColor: "#F44336",
+        borderUpColor: "#4CAF50",
+        borderDownColor: "#F44336",
+        wickUpColor: "#4CAF50",
+        wickDownColor: "#F44336",
+      }),
+    [contextTheme]
+  );
 
   return (
     <TradingViewIframeStyled>
+      <LeftPanel>
       <iframe
         ref={iframeRef}
         src={initialSrc || ""}
@@ -86,6 +115,10 @@ const TradingViewIframe = () => {
         allowFullScreen
         title="TradingView BTC/USD Chart"
       />
+      </LeftPanel>
+      <RightPanel>  
+        <OrderBook />
+      </RightPanel>
     </TradingViewIframeStyled>
   );
 };

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import styled from "styled-components";
 import { useTheme } from "@/contexts/ThemeContext";
 

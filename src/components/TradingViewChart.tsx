@@ -19,6 +19,7 @@ import {
   darkTheme
 } from '@/components/styled/App.styled';
 import { useTheme } from '@/contexts/ThemeContext';
+import TradingViewIframe from './TradingExtend';
 
 export interface CandlestickData {
   time: string;
@@ -327,6 +328,8 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
           <span>将鼠标移动到图表查看数据</span>
         )}
       </TvLegend>
+
+      <TradingViewIframe />
     </StyledTradingViewChart>
   );
 };

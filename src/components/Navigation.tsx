@@ -25,8 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({ theme }) => {
   const isMobile = useMediaQuery({ maxWidth: 800 });
 
   const navItems = [
-    { path: "/", label: "Home", icon: "🏠" },
-    { path: "/charts", label: "Charts", icon: "📊" },
+    { path: "/", label: "Charts", icon: "📊" },
     { path: "/analysis", label: "Analysis", icon: "📈" },
     { path: "/settings", label: "Settings", icon: "⚙️" },
   ];

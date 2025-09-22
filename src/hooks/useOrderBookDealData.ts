@@ -44,27 +44,32 @@ export const useOrderBookDealData = () => {
       const newAnimatingAsks: Record<number, boolean> = {};
       const newAnimatingBids: Record<number, boolean> = {};
 
-      // Find changed asks
-      wsOrderBook.asks.forEach((ask) => {
-        const existingAsk = orderBookDealData?.asks.find(
-          (a) => a.price === ask.price
-        );
-        if (!existingAsk || existingAsk.amount !== ask.amount) {
-          newAnimatingAsks[ask.price] = true;
-        }
-      });
+      if (orderBookDealData) {
+        // Find changed asks
+        wsOrderBook.asks.forEach((ask) => {
+          const existingAsk = orderBookDealData?.asks.find(
+            (a) => a.price === ask.price
+          );
 
-      // Find changed bids
-      wsOrderBook.bids.forEach((bid) => {
-        const existingBid = orderBookDealData?.bids.find(
-          (b) => b.price === bid.price
-        );
-        if (!existingBid || existingBid.amount !== bid.amount) {
-          newAnimatingBids[bid.price] = true;
-        }
-      });
+          if (!existingAsk || existingAsk.amount !== ask.amount) {
+            newAnimatingAsks[ask.price] = true;
+          }
+        });
+
+        // Find changed bids
+        wsOrderBook.bids.forEach((bid) => {
+          const existingBid = orderBookDealData?.bids.find(
+            (b) => b.price === bid.price
+          );
+          if (!existingBid || existingBid.amount !== bid.amount) {
+            newAnimatingBids[bid.price] = true;
+          }
+        });
+      }
 
       setOrderBookDealData(wsOrderBook);
+      setAnimatingAsks(newAnimatingAsks);
+      setAnimatingBids(newAnimatingBids);
 
       // Clear animations after a very short delay (100ms)
       setTimeout(() => {

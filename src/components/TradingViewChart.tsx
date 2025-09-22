@@ -82,6 +82,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
     volume?: number;
   } | null>(null);
 
+  // 1. 图表创建 - 只在容器、尺寸、主题变化时重新创建
   useEffect(() => {
     if (!chartContainerRef.current) return;
 
@@ -116,40 +117,32 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
 
     chartRef.current = chart;
 
-    // 创建K线图系列
-    if (showCandlestick) {
-      const candlestickChartSeries = chart.addSeries(CandlestickSeries, {
-        upColor: '#26a69a',
-        downColor: '#ef5350',
-        borderDownColor: '#ef5350',
-        borderUpColor: '#26a69a',
-        wickDownColor: '#ef5350',
-        wickUpColor: '#26a69a',
-      });
-      candlestickSeriesRef.current = candlestickChartSeries;
-    }
+    // 创建所有系列（一次性创建，不随状态变化）
+    const candlestickChartSeries = chart.addSeries(CandlestickSeries, {
+      upColor: '#26a69a',
+      downColor: '#ef5350',
+      borderDownColor: '#ef5350',
+      borderUpColor: '#26a69a',
+      wickDownColor: '#ef5350',
+      wickUpColor: '#26a69a',
+    });
+    candlestickSeriesRef.current = candlestickChartSeries;
 
-    // 创建折线图系列
-    if (showLine) {
-      const lineChartSeries = chart.addSeries(LineSeries, {
-        color: '#2962FF',
-        lineWidth: 2,
-      });
-      lineSeriesRef.current = lineChartSeries;
-    }
+    const lineChartSeries = chart.addSeries(LineSeries, {
+      color: '#2962FF',
+      lineWidth: 2,
+    });
+    lineSeriesRef.current = lineChartSeries;
 
-    // 创建成交量系列
-    if (showVolume) {
-      const volumeChartSeries = chart.addSeries(HistogramSeries, {
-        color: '#26a69a',
-        priceFormat: { type: 'volume' },
-        priceScaleId: '',
-      });
-      volumeChartSeries.priceScale().applyOptions({
-        scaleMargins: { top: 0.8, bottom: 0 },
-      });
-      volumeSeriesRef.current = volumeChartSeries;
-    }
+    const volumeChartSeries = chart.addSeries(HistogramSeries, {
+      color: '#26a69a',
+      priceFormat: { type: 'volume' },
+      priceScaleId: '',
+    });
+    volumeChartSeries.priceScale().applyOptions({
+      scaleMargins: { top: 0.8, bottom: 0 },
+    });
+    volumeSeriesRef.current = volumeChartSeries;
 
     // 十字线悬浮提示
     const handleCrosshairMove = (param: any) => {
@@ -201,26 +194,38 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
         chart.remove();
       }
     };
-  }, [height, width, showVolume, showLine, showCandlestick]);
+  }, [height, width, currentTheme]);
 
-  // 更新数据
+  // 2. 数据更新 - 根据 show 状态控制数据显示/隐藏
   useEffect(() => {
-    if (candlestickSeriesRef.current && candlestickData.length > 0) {
-      candlestickSeriesRef.current.setData(candlestickData);
+    if (candlestickSeriesRef.current) {
+      if (showCandlestick && candlestickData.length > 0) {
+        candlestickSeriesRef.current.setData(candlestickData);
+      } else {
+        candlestickSeriesRef.current.setData([]); // 隐藏数据
+      }
     }
-  }, [candlestickData]);
-
-  useEffect(() => {
-    if (lineSeriesRef.current && lineData.length > 0) {
-      lineSeriesRef.current.setData(lineData);
-    }
-  }, [lineData]);
+  }, [candlestickData, showCandlestick]);
 
   useEffect(() => {
-    if (volumeSeriesRef.current && volumeData.length > 0) {
-      volumeSeriesRef.current.setData(volumeData);
+    if (lineSeriesRef.current) {
+      if (showLine && lineData.length > 0) {
+        lineSeriesRef.current.setData(lineData);
+      } else {
+        lineSeriesRef.current.setData([]); // 隐藏数据
+      }
     }
-  }, [volumeData]);
+  }, [lineData, showLine]);
+
+  useEffect(() => {
+    if (volumeSeriesRef.current) {
+      if (showVolume && volumeData.length > 0) {
+        volumeSeriesRef.current.setData(volumeData);
+      } else {
+        volumeSeriesRef.current.setData([]); // 隐藏数据
+      }
+    }
+  }, [volumeData, showVolume]);
 
   // 自适应图表大小
   useEffect(() => {

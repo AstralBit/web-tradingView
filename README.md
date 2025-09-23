@@ -1,72 +1,164 @@
-# React + TypeScript + trendingView
+# Web TradingView - Advanced Trading Interface
 
+A modern, responsive web application built with React, TypeScript, and TradingView integration, featuring real-time order book visualization, interactive charts, and comprehensive trading tools.
 
-<img width="1815" height="926" alt="Snipaste_2025-09-19_17-41-35" src="https://github.com/user-attachments/assets/fc755be9-9ea3-4f70-91f7-a28cc5df756d" />
+![Trading Interface Preview](https://github.com/user-attachments/assets/fc755be9-9ea3-4f70-91f7-a28cc5df756d)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Features
 
-Currently, two official plugins are available:
+### 📊 **Interactive Trading Charts**
+- **TradingView Integration**: Embedded TradingView widgets with customizable themes
+- **Real-time Data**: Live market data updates and price movements
+- **Multiple Timeframes**: Support for 1H, 1D, 1W, 1M, 1Y, and ALL timeframes
+- **Theme Support**: Dark and light theme switching
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 📈 **Order Book Visualization**
+- **Real-time Order Book**: Live bid/ask order display with depth visualization
+- **Interactive Tooltips**: Hover tooltips with detailed order information and statistics
+- **Smart Positioning**: Tooltips that follow elements during scrolling
+- **Visual Indicators**: Color-coded order types and volume bars
 
-## Expanding the ESLint configuration
+### 🎨 **Modern UI/UX**
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Styled Components**: Modern CSS-in-JS styling with TypeScript support
+- **Smooth Animations**: Flash animations for order updates and interactions
+- **Accessibility**: Keyboard navigation and screen reader support
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ⚡ **Performance Optimized**
+- **React Portals**: Efficient tooltip rendering outside component tree
+- **Event Optimization**: Debounced scroll handlers and efficient re-renders
+- **Memory Management**: Proper cleanup of event listeners and subscriptions
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Styled Components
+- **Charts**: TradingView Widget API
+- **State Management**: React Context + Hooks
+- **Package Manager**: pnpm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd web-tradingView
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Start development server**
+   ```bash
+   pnpm dev
+   ```
+
+4. **Build for production**
+   ```bash
+   pnpm build
+   ```
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/           # Reusable UI components
+│   ├── OrderBook.tsx    # Main order book component
+│   ├── OrderList.tsx    # Order list with tooltips
+│   ├── TradingExtend.tsx # TradingView iframe wrapper
+│   └── OrderBookToolTip.tsx # Interactive tooltip component
+├── hooks/               # Custom React hooks
+│   ├── useOrderBookWebSocket.ts # WebSocket data management
+│   └── useOrderBookDealData.ts  # Order book calculations
+├── contexts/            # React Context providers
+│   └── ThemeContext.tsx # Theme management
+├── styles/              # Global styles and themes
+└── types/               # TypeScript type definitions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎯 Key Components
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### OrderBook Component
+- Real-time order book display
+- Bid/ask order separation
+- Volume visualization with progress bars
+- Interactive hover effects
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### OrderList Component
+- Individual order row rendering
+- Smart tooltip positioning
+- Scroll-aware content updates
+- Gray-out effects for better UX
+
+### OrderBookToolTip Component
+- Portal-based rendering for z-index management
+- Dynamic position calculation
+- Real-time content updates
+- Theme-aware styling
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env` file in the root directory:
+
+```env
+VITE_TRADINGVIEW_SYMBOL=BITFINEX:BTCUSD
+VITE_WEBSOCKET_URL=wss://your-websocket-url
 ```
+
+### TradingView Configuration
+The TradingView widget can be configured in `TradingExtend.tsx`:
+
+```typescript
+const buildTradingViewUrl = (config: Record<string, string>) => {
+  // Customize chart appearance, intervals, and features
+}
+```
+
+## 🎨 Theming
+
+The application supports both dark and light themes:
+
+```typescript
+// Theme switching
+const { theme, toggleTheme } = useTheme();
+```
+
+## 📱 Responsive Design
+
+- **Desktop**: Full-width layout with side-by-side chart and order book
+- **Mobile**: Stacked layout with optimized touch interactions
+- **Tablet**: Adaptive grid system for optimal viewing
+
+## 🚀 Performance Features
+
+- **Lazy Loading**: Components loaded on demand
+- **Memoization**: Optimized re-renders with React.memo
+- **Event Debouncing**: Efficient scroll and resize handlers
+- **Portal Rendering**: Tooltips rendered outside component tree
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [TradingView](https://www.tradingview.com/) for the charting library
+- [React](https://reactjs.org/) for the UI framework
+- [Styled Components](https://styled-components.com/) for CSS-in-JS
+- [Vite](https://vitejs.dev/) for the build tool
+
+---
+
+**Built with ❤️ for the trading community**

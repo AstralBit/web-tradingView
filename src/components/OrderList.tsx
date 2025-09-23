@@ -3,7 +3,7 @@ import type {
   MouseEvent as ReactMouseEvent,
   TouchEvent as ReactTouchEvent,
 } from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import styled, { keyframes, css } from "styled-components";
 import OrderBookToolTip from "./OrderBookToolTip";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -26,30 +26,33 @@ const OrderList = ({
     x: number;
     y: number;
   }>({ x: 0, y: 0 });
+  const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
+  const [tooltipContent, setTooltipContent] = useState<React.ReactNode>(null);
 
   const handleOrderRowMouseEnter = (
     e: ReactMouseEvent,
-    type: "ask" | "bid",
-    price: number,
-    amount: number,
-    total: number,
-    sum: number,
-    totalSum: number,
+    // type: "ask" | "bid",
+    // price: number,
+    // amount: number,
+    // total: number,
+    // sum: number,
+    // totalSum: number,
     rowId: string
   ) => {
-    console.log(
-      "handleOrderRowMouseEnter",
-      e,
-      type,
-      price,
-      amount,
-      total,
-      sum,
-      totalSum,
-      rowId
-    );
+    // console.log(
+    //   "handleOrderRowMouseEnter",
+    //   e,
+    //   type,
+    //   price,
+    //   amount,
+    //   total,
+    //   sum,
+    //   totalSum,
+    //   rowId
+    // );
     setCurrentRowId(rowId);
     setShowToolTip(true);
+    setTargetElement(e.currentTarget as HTMLElement);
 
     // 计算 ToolTip 位置
     const rect = e.currentTarget.getBoundingClientRect();
@@ -59,11 +62,16 @@ const OrderList = ({
       x: rect.left - tooltipWidth - 10, // 在行左侧显示，向左偏移弹窗宽度
       y: rect.top - tooltipHeight / 2 + 10,
     });
+
+    // 初始计算 ToolTip 内容
+    setTooltipContent(calculateTooltipContent());
   };
   const handleOrderRowMouseLeave = () => {
-    console.log("handleOrderRowMouseLeave");
+    // console.log("handleOrderRowMouseLeave");
     setShowToolTip(false);
     setCurrentRowId(null);
+    setTargetElement(null);
+    setTooltipContent(null);
   };
   const handleOrderRowTouch = (
     e: ReactTouchEvent,
@@ -88,6 +96,43 @@ const OrderList = ({
     );
   };
   const { theme } = useTheme();
+
+  // 计算 ToolTip 内容的函数
+  const calculateTooltipContent = () => {
+    if (!displayOrders || displayOrders.length === 0) return null;
+    
+    return (
+      <OrderListRowToolTipContentStyled>
+        <div>
+          均价:{" "}
+          {(
+            displayOrders?.reduce(
+              (sum, order) => sum + order.price,
+              0
+            ) / (displayOrders?.length || 1)
+          ).toFixed(2)}
+        </div>
+        <div>
+          合计(USD):{" "}
+          {displayOrders
+            ?.reduce((sum, order) => sum + order?.price, 0)
+            ?.toFixed(2)}
+        </div>
+        <div>
+          合计(BTC):{" "}
+          {displayOrders
+            ?.reduce((sum, order) => sum + order.sum, 0)
+            ?.toFixed(4)}
+        </div>
+      </OrderListRowToolTipContentStyled>
+    );
+  };
+
+  // 处理位置更新，重新计算内容
+  const handlePositionUpdate = useCallback((_element: HTMLElement) => {
+    // 重新计算 ToolTip 内容
+    setTooltipContent(calculateTooltipContent());
+  }, [displayOrders]); // 依赖 displayOrders 确保数据变化时重新计算
 
   if (!orders || orders.length === 0) return null;
 
@@ -132,12 +177,6 @@ const OrderList = ({
             onMouseEnter={(e) =>
               handleOrderRowMouseEnter(
                 e,
-                type,
-                order.price,
-                order.amount,
-                order.price * order.amount,
-                order.sum,
-                totalSum,
                 rowId
               )
             }
@@ -172,31 +211,9 @@ const OrderList = ({
             <OrderBookToolTip
               isVisible={showToolTip && currentRowId === rowId}
               position={tooltipPosition}
-              content={
-                <OrderListRowToolTipContentStyled>
-                  <div>
-                    均价:{" "}
-                    {(
-                      displayOrders?.reduce(
-                        (sum, order) => sum + order.price,
-                        0
-                      ) / (displayOrders?.length || 1)
-                    ).toFixed(2)}
-                  </div>
-                  <div>
-                    合计(USD):{" "}
-                    {displayOrders
-                      ?.reduce((sum, order) => sum + order?.price, 0)
-                      ?.toFixed(2)}
-                  </div>
-                  <div>
-                    合计(BTC):{" "}
-                    {displayOrders
-                      ?.reduce((sum, order) => sum + order.sum, 0)
-                      ?.toFixed(4)}
-                  </div>
-                </OrderListRowToolTipContentStyled>
-              }
+              targetElement={targetElement}
+              onPositionUpdate={handlePositionUpdate}
+              content={tooltipContent}
             />
           </OrderListRowStyled>
         );

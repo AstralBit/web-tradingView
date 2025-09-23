@@ -390,7 +390,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = ({
             {legend.volume !== undefined && <span>Vol {legend.volume}</span>}
           </>
         ) : (
-          <span>将鼠标移动到图表查看数据</span>
+          <span>Move the mouse over the chart to view the data</span>
         )}
       </TvLegend>
     </StyledTradingViewChart>

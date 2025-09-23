@@ -7,6 +7,7 @@ const WsChangeEleStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0 10px;
 `;
 
 const WsChangeEle = () => {

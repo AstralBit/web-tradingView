@@ -6,7 +6,7 @@ import type {
 import { useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 import OrderBookToolTip from "./OrderBookToolTip";
-
+import { useTheme } from "@/contexts/ThemeContext";
 const OrderList = ({
   orders,
   type,
@@ -87,6 +87,7 @@ const OrderList = ({
       rowId
     );
   };
+  const { theme } = useTheme();
 
   if (!orders || orders.length === 0) return null;
 
@@ -112,10 +113,13 @@ const OrderList = ({
             : 0;
 
         // 判断当前行是否应该置灰（当前行ID在悬浮行ID之后）
-        const shouldGrayOut = Boolean(currentRowId && 
-          currentRowId.split('-')[1] && 
-          rowId.split('-')[1] && 
-          parseInt(rowId.split('-')[1]) >= parseInt(currentRowId.split('-')[1]));
+        const shouldGrayOut = Boolean(
+          currentRowId &&
+            currentRowId.split("-")[1] &&
+            rowId.split("-")[1] &&
+            parseInt(rowId.split("-")[1]) >=
+              parseInt(currentRowId.split("-")[1])
+        );
 
         return (
           <OrderListRowStyled
@@ -123,6 +127,8 @@ const OrderList = ({
             type={type}
             isAnimating={isAnimating}
             shouldGrayOut={shouldGrayOut}
+            isCurrentRow={currentRowId === rowId}
+            theme={theme}
             onMouseEnter={(e) =>
               handleOrderRowMouseEnter(
                 e,
@@ -228,7 +234,7 @@ const OrderListRowToolTipContentStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  `;
+`;
 
 const OrderListStyled = styled.div`
   display: flex;
@@ -243,14 +249,27 @@ const OrderListRowStyled = styled.div<{
   type: "ask" | "bid";
   isAnimating: boolean;
   shouldGrayOut: boolean;
+  isCurrentRow: boolean;
+  theme: string;
 }>`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: relative;
-  background-color: ${({ shouldGrayOut }) => (shouldGrayOut ? "rgba(255, 255, 255, 0.1)" : "transparent")};
+  background-color: ${({ shouldGrayOut, theme }) =>
+    shouldGrayOut
+      ? `${
+          theme === "dark"
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(172, 169, 169, 0.1)"
+        }`
+      : "transparent"};
   transition: opacity 0.2s ease;
   padding: 2px 0;
   cursor: pointer;
+  border-top: ${({ isCurrentRow, theme }) =>
+    isCurrentRow
+      ? `1px dashed ${theme === "dark" ? "#656565" : "#b4b0b0"}`
+      : "none"};
 
   /* 添加动画效果 - 使用 css 辅助函数 */
   ${({ type, isAnimating }) =>

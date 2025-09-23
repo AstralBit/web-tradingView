@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
+import { ScaleLoader } from "react-spinners";
 import { useTheme } from "@/contexts/ThemeContext";
 import OrderBook from "./OrderBook";
 
@@ -108,7 +109,13 @@ const TradingViewIframe = () => {
   return (
     <TradingViewIframeStyled>
       <LeftPanel>
-        {!isLoaded && <LodaingStyled theme={contextTheme} />}
+        {!isLoaded && (
+          <LodaingStyled theme={contextTheme}>
+            <ScaleLoader
+              color={contextTheme === "dark" ? "#ffffff" : "#000000"}
+            />
+          </LodaingStyled>
+        )}
         <iframe
           ref={iframeRef}
           src={initialSrc || ""}
@@ -133,6 +140,9 @@ const TradingViewIframe = () => {
 const LodaingStyled = styled.div<{ theme: string }>`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) =>
     theme === "dark" ? "#0a0b0d" : "#ffffff"};
 `;

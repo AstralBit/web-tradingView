@@ -118,6 +118,7 @@ export const ControlLabel = styled.label<{ theme: Theme }>`
 export const ChartSection = styled.div<{ theme: Theme }>`
   background: ${props => props.theme.colors.surface};
   transition: all 0.3s ease;
+  /* padding-top: 10px; */
 `;
 
 export const TradingViewChart = styled.div<{ theme: Theme }>`

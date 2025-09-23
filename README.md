@@ -2,7 +2,8 @@
 
 A modern, responsive web application built with React, TypeScript, and TradingView integration, featuring real-time order book visualization, interactive charts, and comprehensive trading tools.
 
-![Trading Interface Preview](https://github.com/user-attachments/assets/fc755be9-9ea3-4f70-91f7-a28cc5df756d)
+<img width="1871" height="894" alt="Snipaste_2025-09-22_17-14-37" src="https://github.com/user-attachments/assets/71e586a9-3a24-4b06-bfc8-c9bd5f61599b" />
+
 
 ## 🚀 Features
 

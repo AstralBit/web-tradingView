@@ -1,10 +1,9 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { useTheme } from "@/contexts/ThemeContext";
 import OrderBook from "./OrderBook";
 
 export type TimeFrame = "1H" | "1D" | "1W" | "1M" | "1Y" | "ALL";
-
 
 // 主容器组件
 const TradingViewIframeStyled = styled.div`
@@ -34,7 +33,6 @@ const RightPanel = styled.div`
     width: 100%;
   }
 `;
-
 
 const buildTradingViewUrl = (config: Record<string, string>) => {
   const params = new URLSearchParams();
@@ -72,6 +70,8 @@ const TradingViewIframe = () => {
   // 使用主题上下文
   const { theme: contextTheme } = useTheme();
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // Use a ref to store the iframe element
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const initialSrc = useMemo(
@@ -100,27 +100,41 @@ const TradingViewIframe = () => {
     [contextTheme]
   );
 
+  const handleIframeLoad = () => {
+    console.log("Iframe loaded");
+    setIsLoaded(true);
+  };
+
   return (
     <TradingViewIframeStyled>
       <LeftPanel>
-      <iframe
-        ref={iframeRef}
-        src={initialSrc || ""}
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-        frameBorder="0"
-        scrolling="no"
-        allowFullScreen
-        title="TradingView BTC/USD Chart"
-      />
+        {!isLoaded && <LodaingStyled theme={contextTheme} />}
+        <iframe
+          ref={iframeRef}
+          src={initialSrc || ""}
+          onLoad={handleIframeLoad}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          frameBorder="0"
+          scrolling="no"
+          allowFullScreen
+          title="TradingView BTC/USD Chart"
+        />
       </LeftPanel>
-      <RightPanel>  
+      <RightPanel>
         <OrderBook />
       </RightPanel>
     </TradingViewIframeStyled>
   );
 };
+
+const LodaingStyled = styled.div<{ theme: string }>`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) =>
+    theme === "dark" ? "#0a0b0d" : "#ffffff"};
+`;
 
 export default TradingViewIframe;
